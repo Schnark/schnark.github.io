@@ -13,7 +13,7 @@ function loadData (id, callback) {
 	}
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', './' + id + '/install/data.json', true);
+	xhr.open('GET', './' + id + '/install/install.json', true);
 	if (xhr.overrideMimeType) {
 		xhr.overrideMimeType('application/json');
 	}
