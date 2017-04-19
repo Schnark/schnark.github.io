@@ -1,0 +1,69 @@
+html {
+	font-family: sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+#icon {
+	display: block;
+	margin: auto;
+	width: 80px;
+}
+
+.gallery img {
+	float: left;
+	width: 270px;
+	margin: 5px;
+	border: 1px solid black;
+}
+
+.gallery {
+	overflow: hidden;
+	border: 1px solid black;
+}
+
+button, .button {
+	font: inherit;
+	display: block;
+	width: 100%;
+	line-height: 2;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	border: none;
+	border-radius: 2px;
+	text-align: center;
+	background-image: linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
+	background-color: blue;
+	color: white;
+	text-decoration: none;
+	cursor: default;
+}
+
+button:disabled {
+	background-color: #ccc;
+	color: black;
+}
+
+@keyframes pulse {
+	from {
+		width: 10px;
+		height: 10px;
+		margin-top: 60px;
+	}
+	to {
+		width: 130px;
+		height: 130px;
+		margin-top: 0px;
+	}
+}
+
+.please-wait {
+	width: 10px;
+	height: 10px;
+	margin: 60px auto 0;
+	border: 3px solid orange;
+	border-radius: 50%;
+	animation: pulse 3s linear infinite alternate;
+}
