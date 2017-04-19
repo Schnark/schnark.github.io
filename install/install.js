@@ -118,7 +118,7 @@ function updateInstallButton (button, status, url) {
 		return;
 	}
 	button.disabled = true;
-	button.textContent = status === STATUS_NO_INSTALL ?
+	button.innerHTML = status === STATUS_NO_INSTALL ?
 		_('no-install') :
 		_('already-installed') + '&nbsp;<span style="color: green;">✔</span>';
 	button.onclick = undefined;
