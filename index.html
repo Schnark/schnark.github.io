@@ -16,6 +16,7 @@ body {
 	background-color: #fff;
 	color: #222;
 	padding-left: 2em;
+	padding-right: 2em;
 }
 
 h1 {
@@ -29,6 +30,25 @@ p {
 ul {
 	line-height: 2;
 	margin: 1em 2em;
+}
+
+ul.icons {
+	overflow: hidden;
+	background-color: #def;
+	border: 4px ridge silver;
+	border-radius: 20px;
+	margin-left: 0;
+}
+
+.icons li {
+	display: block;
+	float: left;
+}
+
+.icons img {
+	width: 60px;
+	border: none;
+	margin: 10px;
 }
 
 a {
@@ -45,7 +65,7 @@ a:hover, a:focus {
 }
 
 address {
-	margin-top: 5em;
+	margin-top: 4em;
 	border-top: thin solid;
 	font-size: small;
 	font-variant: normal;
@@ -54,38 +74,59 @@ address {
 }
 </style>
 </head><body>
-<section lang="en">
+<section>
+<p style="text-align: right;">
+<a href="#en">en</a> – <a href="#de">de</a>
+</p>
+<ul class="icons">
+<li><a href="install.html?id=barcode-reader"><img src="barcode-reader/icons/icon-128.png"></a></li>
+<li><a href="install.html?id=calender"><img src="calender/img/icon128.png"></a></li>
+<li><a href="install.html?id=docviewer"><img src="docviewer/icon-128.png"></a></li>
+<li><a href="install.html?id=emoticons"><img src="emoticons/icon128.png"></a></li>
+<li><a href="install.html?id=fall"><img src="fall/icon128.png"></a></li>
+<li><a href="install.html?id=ffosapp-installer"><img src="ffosapp-installer/icon-128.png"></a></li>
+<li><a href="install.html?id=musicmetadata"><img src="musicmetadata/icon-128.png"></a></li>
+<li><a href="install.html?id=rss"><img src="rss/icons/icon-128.png"></a></li>
+<li><a href="install.html?id=ruler-protractor"><img src="ruler-protractor/icons/icon-128.png"></a></li>
+<li><a href="install.html?id=sudoku"><img src="sudoku/icons/icon-128.png"></a></li>
+<li><a href="install.html?id=unicode"><img src="unicode/icons/icon-128.png"></a></li>
+<li><a href="install.html?id=wallpaper"><img src="wallpaper/icon128.png"></a></li>
+</ul>
+</section>
+<section id="en" lang="en">
 <h1>Apps for Firefox OS</h1>
 <p>This page lists my apps for Firefox OS. You can install them or (at least to some degree) use them online in any browser. All these apps are still maintained and will receive updates.</p>
 <ul>
-<li><a href="/calender/install/">Calendar</a>: A calendar which shows additional information for each day. (<a href="https://github.com/Schnark/calender">source</a>)</li>
-<li><a href="/docviewer/install/">Reader</a>: A reader for various formats, including EPUB and PDF. (<a href="https://github.com/Schnark/docviewer">source</a>)</li>
-<li><a href="/emoticons/install/">Emoticons</a>: A dictionary for emoticons (in German). (<a href="https://github.com/Schnark/emoticons">source</a>)</li>
-<li><a href="/fall/install/">Aaaaa...</a>: This app makes your phone scream when in free fall. (<a href="https://github.com/Schnark/fall">source</a>)</li>
-<li><a href="/ffosapp-installer/install/">App installer</a>: This app allows you to install apps that come without their own installation code, mainly intended for testing. (<a href="https://github.com/Schnark/ffosapp-installer">source</a>)</li>
-<li><a href="/musicmetadata/install/">Music Metadata</a>: Edit metadata of audio files. (<a href="https://github.com/Schnark/musicmetadata">source</a>)</li>
-<li><a href="/ruler-protractor/install/">Ruler, Protractor</a>: Ruler and protractor. (<a href="https://github.com/Schnark/ruler-protractor">source</a>)</li>
-<li><a href="/rss/install/">Firri</a>: A feed reader for RSS and Atom feeds. (<a href="https://github.com/Schnark/rss">source</a>)</li>
-<li><a href="/sudoku/install/">Sudoku Solver</a>: An app to recognize and solve Sudokus. (<a href="https://github.com/Schnark/sudoku">source</a>)</li>
-<li><a href="/unicode/install/">Unicode Browser</a>: An app to explore all Unicode characters. (<a href="https://github.com/Schnark/unicode">source</a>)</li>
-<li><a href="/wallpaper/install/">Wallpaper Groups</a>: An app to determine wallpaper groups. (<a href="https://github.com/Schnark/wallpaper">source</a>)</li>
+<li><a href="install.html?id=barcode-reader">QR scanner</a>: A scanner for QR codes and other barcodes. (<a href="https://github.com/Schnark/barcode-reader">source</a>)</li>
+<li><a href="install.html?id=calender">Calendar</a>: A calendar which shows additional information for each day. (<a href="https://github.com/Schnark/calender">source</a>)</li>
+<li><a href="install.html?id=docviewer">Reader</a>: A reader for various formats, including EPUB and PDF. (<a href="https://github.com/Schnark/docviewer">source</a>)</li>
+<li><a href="install.html?id=emoticons">Emoticons</a>: A dictionary for emoticons (in German). (<a href="https://github.com/Schnark/emoticons">source</a>)</li>
+<li><a href="install.html?id=fall">Aaaaa...</a>: This app makes your phone scream when in free fall. (<a href="https://github.com/Schnark/fall">source</a>)</li>
+<li><a href="install.html?id=ffosapp-installer">App installer</a>: This app allows you to install apps that come without their own installation code, mainly intended for testing. (<a href="https://github.com/Schnark/ffosapp-installer">source</a>)</li>
+<li><a href="install.html?id=musicmetadata">Music Metadata</a>: Edit metadata of audio files. (<a href="https://github.com/Schnark/musicmetadata">source</a>)</li>
+<li><a href="install.html?id=ruler-protractor">Ruler, Protractor</a>: Ruler and protractor. (<a href="https://github.com/Schnark/ruler-protractor">source</a>)</li>
+<li><a href="install.html?id=rss">Firri</a>: A feed reader for RSS and Atom feeds. (<a href="https://github.com/Schnark/rss">source</a>)</li>
+<li><a href="install.html?id=sudoku">Sudoku Solver</a>: An app to recognize and solve Sudokus. (<a href="https://github.com/Schnark/sudoku">source</a>)</li>
+<li><a href="install.html?id=unicode">Unicode Browser</a>: An app to explore all Unicode characters. (<a href="https://github.com/Schnark/unicode">source</a>)</li>
+<li><a href="install.html?id=wallpaper">Wallpaper Groups</a>: An app to determine wallpaper groups. (<a href="https://github.com/Schnark/wallpaper">source</a>)</li>
 </ul>
 </section>
-<section lang="de">
+<section id="de" lang="de">
 <h1>Apps für Firefox OS</h1>
 <p>Diese Seite listet meine Apps für Firefox OS auf. Du kannst sie installieren oder (zumindest teilweise) online in einem beliebigen Browser nutzen. Alle diese Apps werden noch weiterentwickelt und erhalten Aktualisierungen.</p>
 <ul>
-<li><a href="/calender/install/">Tageskalender</a>: Ein Kalender mit zusätzlichen Informationen für jeden Tag. (<a href="https://github.com/Schnark/calender">Quellcode</a>)</li>
-<li><a href="/docviewer/install/">Leser</a>: Eine Lese-App für verschiedene Formate, einschließlich EPUB und PDF. (<a href="https://github.com/Schnark/docviewer">Quellcode</a>)</li>
-<li><a href="/emoticons/install/">Emoticons</a>: Ein Emoticon-Verzeichnis. (<a href="https://github.com/Schnark/emoticons">Quellcode</a>)</li>
-<li><a href="/fall/install/">Aaaaa...</a>: Diese App lässt dein Smartphone schreien, wenn es herunterfällt. (<a href="https://github.com/Schnark/fall">Quellcode</a>)</li>
-<li><a href="/ffosapp-installer/install/">App installer</a>: Diese App ermöglicht es andere Apps zu installieren, die keinen eigenen Installationscode besitzen, hauptsächlich zum Testen. (<a href="https://github.com/Schnark/ffosapp-installer">Quellcode</a>)</li>
-<li><a href="/musicmetadata/install/">Musik-Metadaten</a>: Ermöglicht es, Metadaten in Audio-Dateien zu bearbeiten. (<a href="https://github.com/Schnark/musicmetadata">Quellcode</a>)</li>
-<li><a href="/ruler-protractor/install/">Lineal, Winkelmesser</a>: Lineal und Winkelmesser. (<a href="https://github.com/Schnark/ruler-protractor">Quellcode</a>)</li>
-<li><a href="/rss/install/">Firri</a>: Ein Feedreader für RSS- und Atom-Feeds. (<a href="https://github.com/Schnark/rss">Quellcode</a>)</li>
-<li><a href="/sudoku/install/">Sudoku-Löser</a>: Erkennt und löst Sudokus. (<a href="https://github.com/Schnark/sudoku">Quellcode</a>)</li>
-<li><a href="/unicode/install/">Unicode-Browser</a>: Eine App um alle Unicode-Zeichen zu erkunden. (<a href="https://github.com/Schnark/unicode">Quellcode</a>)</li>
-<li><a href="/wallpaper/install/">Wallpaper Groups</a>: Eine App um ebene kristallographische Gruppen zu bestimmen (Englisch). (<a href="https://github.com/Schnark/wallpaper">Quellcode</a>)</li>
+<li><a href="install.html?id=barcode-reader">QR-Leser</a>: Ein Scanner für QR-Codes und andere Strichcodes. (<a href="https://github.com/Schnark/barcode-reader">Quellcode</a>)</li>
+<li><a href="install.html?id=calender">Tageskalender</a>: Ein Kalender mit zusätzlichen Informationen für jeden Tag. (<a href="https://github.com/Schnark/calender">Quellcode</a>)</li>
+<li><a href="install.html?id=docviewer">Leser</a>: Eine Lese-App für verschiedene Formate, einschließlich EPUB und PDF. (<a href="https://github.com/Schnark/docviewer">Quellcode</a>)</li>
+<li><a href="install.html?id=emoticons">Emoticons</a>: Ein Emoticon-Verzeichnis. (<a href="https://github.com/Schnark/emoticons">Quellcode</a>)</li>
+<li><a href="install.html?id=fall">Aaaaa...</a>: Diese App lässt dein Smartphone schreien, wenn es herunterfällt. (<a href="https://github.com/Schnark/fall">Quellcode</a>)</li>
+<li><a href="install.html?id=ffosapp-installer">App installer</a>: Diese App ermöglicht es andere Apps zu installieren, die keinen eigenen Installationscode besitzen, hauptsächlich zum Testen. (<a href="https://github.com/Schnark/ffosapp-installer">Quellcode</a>)</li>
+<li><a href="install.html?id=musicmetadata">Musik-Metadaten</a>: Ermöglicht es, Metadaten in Audio-Dateien zu bearbeiten. (<a href="https://github.com/Schnark/musicmetadata">Quellcode</a>)</li>
+<li><a href="install.html?id=ruler-protractor">Lineal, Winkelmesser</a>: Lineal und Winkelmesser. (<a href="https://github.com/Schnark/ruler-protractor">Quellcode</a>)</li>
+<li><a href="install.html?id=rss">Firri</a>: Ein Feedreader für RSS- und Atom-Feeds. (<a href="https://github.com/Schnark/rss">Quellcode</a>)</li>
+<li><a href="install.html?id=sudoku">Sudoku-Löser</a>: Erkennt und löst Sudokus. (<a href="https://github.com/Schnark/sudoku">Quellcode</a>)</li>
+<li><a href="install.html?id=unicode">Unicode-Browser</a>: Eine App um alle Unicode-Zeichen zu erkunden. (<a href="https://github.com/Schnark/unicode">Quellcode</a>)</li>
+<li><a href="install.html?id=wallpaper">Wallpaper Groups</a>: Eine App um ebene kristallographische Gruppen zu bestimmen (Englisch). (<a href="https://github.com/Schnark/wallpaper">Quellcode</a>)</li>
 </ul>
 </section>
 <address>
