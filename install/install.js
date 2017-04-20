@@ -74,37 +74,41 @@ function getTitle (data) {
 	return data.title[lang] || data.title.en;
 }
 
-function getIcon (id, data) {
-	return id + '/' + data.icon;
+function getIcon (data) {
+	return data.id + '/' + data.icon;
 }
 
-function getScreenshots (id, data) {
+function getScreenshots (data) {
 	return data.screenshots.map(function (url) {
-		return '<img src="' + id + '/install/' + url + '">';
+		return '<img src="' + data.id + '/install/' + url + '">';
 	}).join('');
 }
 
 function getDescription (data) {
-	var lang = _('langcode');
-	return (data.desc[lang] || data.desc.en).map(function (desc) {
-		return '<p>' + desc + '</p>';
-	}).join('');
+	var lang = _('langcode'), desc;
+	desc = data.desc[lang] || data.desc.en;
+	if (Array.isArray(desc)) {
+		desc = desc.map(function (d) {
+			return '<p>' + d + '</p>';
+		}).join('');
+	}
+	return desc;
 }
 
 function getHasServiceWorker (data) {
 	return data.serviceworker;
 }
 
-function getOnlineUrl (id) {
-	return id + '/index.html';
+function getOnlineUrl (data) {
+	return data.id + '/index.html';
 }
 
-function getCodeUrl (id) {
-	return 'https://github.com/Schnark/' + id;
+function getCodeUrl (data) {
+	return 'https://github.com/Schnark/' + data.id;
 }
 
-function getManifestUrl (id) {
-	return 'https://schnark.github.io/' + id  + '/github.manifest.webapp';
+function getManifestUrl (data) {
+	return 'https://schnark.github.io/' + data.id  + '/github.manifest.webapp';
 }
 
 function updateInstallButton (button, status, url) {
@@ -132,22 +136,22 @@ function showError (id) {
 	) + '</p>';
 }
 
-function showInstall (id, data) {
+function showInstall (data) {
 	var button, title, url;
 	title = getTitle(data);
 	document.getElementById('title1').textContent = title;
 	document.getElementById('title2').innerHTML = title;
-	document.getElementById('icon').src = getIcon(id, data);
-	document.getElementById('gallery-container').innerHTML = getScreenshots(id, data);
+	document.getElementById('icon').src = getIcon(data);
+	document.getElementById('gallery-container').innerHTML = getScreenshots(data);
 	document.getElementById('desc-container').innerHTML = getDescription(data);
 	if (getHasServiceWorker(data)) {
 		document.getElementById('inst-1').textContent += ' ' + _('inst-1-sw');
 	}
-	document.getElementById('online-button').href = getOnlineUrl(id);
-	document.getElementById('code-url').href = getCodeUrl(id);
+	document.getElementById('online-button').href = getOnlineUrl(data);
+	document.getElementById('code-url').href = getCodeUrl(data);
 
 	button = document.getElementById('install-button');
-	url = getManifestUrl(id);
+	url = getManifestUrl(data);
 	checkInstallStatus(url, function (result) {
 		updateInstallButton(button, result, url);
 	});
@@ -167,7 +171,8 @@ function init () {
 			if (!data) {
 				showError(id);
 			} else {
-				showInstall(id, data);
+				data.id = id;
+				showInstall(data);
 			}
 		}, false);
 	});
