@@ -14,39 +14,24 @@ function loadData (id, callback) {
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', './' + id + '/install/install.json', true);
-	if (xhr.overrideMimeType) {
-		xhr.overrideMimeType('application/json');
-	}
-	xhr.onreadystatechange = function () {
-		var response;
-		if (xhr.readyState === 4) {
-			if (xhr.status === 200 || xhr.status === 0) {
-				response = xhr.response;
-				if (typeof response === 'string') {
-					try {
-						response = JSON.parse(response);
-					} catch (e) {
-						response = null;
-					}
-				}
-				callback(response);
-			} else {
-				callback();
+	xhr.responseType = 'json';
+	xhr.onload = function () {
+		var response = xhr.response;
+		if (typeof response === 'string') {
+		//just in case the browser doesn't understand responseType = 'json'
+			try {
+				response = JSON.parse(response);
+			} catch (e) {
+				response = null;
 			}
 		}
+		callback(response);
 	};
 	xhr.onerror = function () {
 		callback();
 	};
-	xhr.ontimeout = function () {
-		callback();
-	};
 
-	try {
-		xhr.send(null);
-	} catch (e) {
-		callback();
-	}
+	xhr.send();
 }
 
 function checkInstallStatus (url, callback) {
@@ -140,7 +125,7 @@ function showInstall (data) {
 	var button, title, url;
 	title = getTitle(data);
 	document.getElementById('title1').textContent = title;
-	document.getElementById('title2').innerHTML = title;
+	document.getElementById('title2').textContent = title;
 	document.getElementById('icon').src = getIcon(data);
 	document.getElementById('gallery-container').innerHTML = getScreenshots(data);
 	document.getElementById('desc-container').innerHTML = getDescription(data);
@@ -165,19 +150,19 @@ function init () {
 		id = search.slice(4);
 	}
 	loadData(id, function (data) {
-		window.addEventListener('localized', function () {
-			document.documentElement.lang = document.webL10n.getLanguage();
-			document.documentElement.dir = document.webL10n.getDirection();
-			if (!data) {
-				showError(id);
-			} else {
-				data.id = id;
-				showInstall(data);
-			}
-		}, false);
+		if (!data) {
+			showError(id);
+		} else {
+			data.id = id;
+			showInstall(data);
+		}
 	});
 }
 
-init();
+window.addEventListener('localized', function () {
+	document.documentElement.lang = document.webL10n.getLanguage();
+	document.documentElement.dir = document.webL10n.getDirection();
+	init();
+}, false);
 
 })();
