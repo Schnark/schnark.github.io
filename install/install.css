@@ -12,6 +12,11 @@ h1 {
 	width: 80px;
 }
 
+.gallery {
+	overflow: hidden;
+	border: 1px solid black;
+}
+
 .gallery img {
 	float: left;
 	width: 270px;
@@ -19,9 +24,9 @@ h1 {
 	border: 1px solid black;
 }
 
-.gallery {
-	overflow: hidden;
-	border: 1px solid black;
+.gallery img.landscape {
+	width: auto;
+	height: 270px;
 }
 
 button, .button {

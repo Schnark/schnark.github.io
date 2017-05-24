@@ -4,7 +4,8 @@
 
 var STATUS_NO_INSTALL = 0,
 	STATUS_IS_INSTALLED = 1,
-	STATUS_CAN_INSTALL = 2;
+	STATUS_CAN_INSTALL = 2,
+	STATUS_IS_INSTALLING = 3;
 
 function loadData (id, callback) {
 	if (!(/^[a-z0-9\-]+$/i.test(id))) {
@@ -13,7 +14,7 @@ function loadData (id, callback) {
 	}
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', './' + id + '/install/install.json', true);
+	xhr.open('GET', id + '/install/install.json');
 	xhr.responseType = 'json';
 	xhr.onload = function () {
 		var response = xhr.response;
@@ -65,7 +66,12 @@ function getIcon (data) {
 
 function getScreenshots (data) {
 	return data.screenshots.map(function (url) {
-		return '<img src="' + data.id + '/install/' + url + '">';
+		var index = url.indexOf('#landscape'), cls = '';
+		if (index > -1) {
+			url = url.slice(0, index);
+			cls = ' class="landscape"';
+		}
+		return '<img' + cls + ' src="' + data.id + '/install/' + url + '">';
 	}).join('');
 }
 
@@ -97,26 +103,47 @@ function getManifestUrl (data) {
 }
 
 function updateInstallButton (button, status, url) {
+	var label;
 	if (status === STATUS_CAN_INSTALL) {
 		button.onclick = function () {
 			var request = navigator.mozApps.installPackage(url);
 			request.onsuccess = function () {
 				updateInstallButton(button, STATUS_IS_INSTALLED, url);
 			};
+			request.onerror = function () {
+				updateInstallButton(button, STATUS_CAN_INSTALL, url);
+			};
+			updateInstallButton(button, STATUS_IS_INSTALLING, url);
 		};
 		return;
 	}
 	button.disabled = true;
-	button.innerHTML = status === STATUS_NO_INSTALL ?
-		_('no-install') :
-		_('already-installed') + '&nbsp;<span style="color: green;">✔</span>';
 	button.onclick = undefined;
+	switch (status) {
+	case STATUS_IS_INSTALLED:
+		label = _('already-installed') + '&nbsp;<span style="color: green;">✔</span>';
+		break;
+	case STATUS_IS_INSTALLING:
+		label = _('is-installing');
+		break;
+	default:
+		label = _('no-install');
+	}
+	button.innerHTML = label;
+}
+
+function escapeHtml (str) {
+	return str
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;');
 }
 
 function showError (id) {
 	document.getElementById('error-head').innerHTML = _('error-head');
 	document.getElementById('error-body').innerHTML = '<p>' + (id ?
-		_('error-body', {id: id.replace(/</g, '&lt;')}) :
+		_('error-body', {id: escapeHtml(id)}) :
 		_('error-body-no-id')
 	) + '</p>';
 }
@@ -145,10 +172,8 @@ function showInstall (data) {
 }
 
 function init () {
-	var search = (location.search || '?'), id = '';
-	if (search.indexOf('?id=') === 0) {
-		id = search.slice(4);
-	}
+	var id = /.*[&?]id=([^&]*)/.exec(location.search || '');
+	id = id ? decodeURIComponent(id[1]) : '';
 	loadData(id, function (data) {
 		if (!data) {
 			showError(id);
