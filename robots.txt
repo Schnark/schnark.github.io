@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /docviewer/lib/
+Disallow: /rss/test/
+Disallow: /wallpaper/pages/
