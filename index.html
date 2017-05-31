@@ -17,9 +17,27 @@ body {
 	color: #222;
 	padding-left: 2em;
 	padding-right: 2em;
+	min-width: 15em;
+	max-width: 60em;
+	margin: auto;
+}
+
+a {
+	text-decoration: none;
+	color: #0645ad;
+}
+
+a:visited {
+	color: #0b0080;
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
 }
 
 h1 {
+	font-size: 150%;
+	font-weight: bold;
 	margin-top: 1em;
 }
 
@@ -38,7 +56,9 @@ ul.icons {
 	border: 4px ridge silver;
 	box-shadow: 0 0 5px black;
 	border-radius: 20px;
-	margin-left: 0;
+	min-width: 240px; /* 3 icons */
+	max-width: 480px; /* 6 icons */
+	margin: auto;
 }
 
 .icons li {
@@ -52,19 +72,6 @@ ul.icons {
 	margin: 10px;
 }
 
-a {
-	text-decoration: none;
-	color: #0645ad;
-}
-
-a:visited {
-	color: #0b0080;
-}
-
-a:hover, a:focus {
-	text-decoration: underline;
-}
-
 address {
 	margin-top: 4em;
 	border-top: thin solid;
@@ -72,6 +79,10 @@ address {
 	font-variant: normal;
 	font-style: normal;
 	opacity: 0.9;
+}
+
+address p {
+	padding-bottom: 1em;
 }
 </style>
 </head><body>
@@ -87,6 +98,7 @@ address {
 <li><a href="install.html?id=fall"><img src="fall/icon128.png"></a></li>
 <li><a href="install.html?id=ffosapp-installer"><img src="ffosapp-installer/icon-128.png"></a></li>
 <li><a href="install.html?id=musicmetadata"><img src="musicmetadata/icon-128.png"></a></li>
+<li><a href="install.html?id=racer"><img src="racer/i.png"></a></li>
 <li><a href="install.html?id=rss"><img src="rss/icons/icon-128.png"></a></li>
 <li><a href="install.html?id=ruler-protractor"><img src="ruler-protractor/icons/icon-128.png"></a></li>
 <li><a href="install.html?id=sudoku"><img src="sudoku/icons/icon-128.png"></a></li>
@@ -108,8 +120,9 @@ address {
 <li><a href="install.html?id=fall">Aaaaa...</a>: This app makes your phone scream when in free fall. (<a href="https://github.com/Schnark/fall">source</a>)</li>
 <li><a href="install.html?id=ffosapp-installer">App installer</a>: This app allows you to install apps that come without their own installation code, mainly intended for testing. (<a href="https://github.com/Schnark/ffosapp-installer">source</a>)</li>
 <li><a href="install.html?id=musicmetadata">Music Metadata</a>: Edit metadata of audio files. (<a href="https://github.com/Schnark/musicmetadata">source</a>)</li>
-<li><a href="install.html?id=ruler-protractor">Ruler, Protractor</a>: Ruler and protractor. (<a href="https://github.com/Schnark/ruler-protractor">source</a>)</li>
+<li><a href="install.html?id=racer">Racer</a>: A tiny racer app. (<a href="https://github.com/Schnark/racer">source</a>)</li>
 <li><a href="install.html?id=rss">Firri</a>: A feed reader for RSS and Atom feeds. (<a href="https://github.com/Schnark/rss">source</a>)</li>
+<li><a href="install.html?id=ruler-protractor">Ruler, Protractor</a>: Ruler and protractor. (<a href="https://github.com/Schnark/ruler-protractor">source</a>)</li>
 <li><a href="install.html?id=sudoku">Sudoku Solver</a>: An app to recognize and solve Sudokus. (<a href="https://github.com/Schnark/sudoku">source</a>)</li>
 <li><a href="install.html?id=tts">Text to Speech</a>: An app that reads texts for you. (<a href="https://github.com/Schnark/tts">source</a>)</li>
 <li><a href="install.html?id=unicode">Unicode Browser</a>: An app to explore all Unicode characters. (<a href="https://github.com/Schnark/unicode">source</a>)</li>
@@ -129,8 +142,9 @@ address {
 <li><a href="install.html?id=fall">Aaaaa...</a>: Diese App lässt dein Smartphone schreien, wenn es herunterfällt. (<a href="https://github.com/Schnark/fall">Quellcode</a>)</li>
 <li><a href="install.html?id=ffosapp-installer">App installer</a>: Diese App ermöglicht es andere Apps zu installieren, die keinen eigenen Installationscode besitzen, hauptsächlich zum Testen. (<a href="https://github.com/Schnark/ffosapp-installer">Quellcode</a>)</li>
 <li><a href="install.html?id=musicmetadata">Musik-Metadaten</a>: Ermöglicht es, Metadaten in Audio-Dateien zu bearbeiten. (<a href="https://github.com/Schnark/musicmetadata">Quellcode</a>)</li>
-<li><a href="install.html?id=ruler-protractor">Lineal, Winkelmesser</a>: Lineal und Winkelmesser. (<a href="https://github.com/Schnark/ruler-protractor">Quellcode</a>)</li>
+<li><a href="install.html?id=racer">Racer</a>: Ein winziges Autorennen. (<a href="https://github.com/Schnark/racer">Quellcode</a>)</li>
 <li><a href="install.html?id=rss">Firri</a>: Ein Feedreader für RSS- und Atom-Feeds. (<a href="https://github.com/Schnark/rss">Quellcode</a>)</li>
+<li><a href="install.html?id=ruler-protractor">Lineal, Winkelmesser</a>: Lineal und Winkelmesser. (<a href="https://github.com/Schnark/ruler-protractor">Quellcode</a>)</li>
 <li><a href="install.html?id=sudoku">Sudoku-Löser</a>: Erkennt und löst Sudokus. (<a href="https://github.com/Schnark/sudoku">Quellcode</a>)</li>
 <li><a href="install.html?id=tts">Vorleser</a>: Liest Texte vor. (<a href="https://github.com/Schnark/tts">Quellcode</a>)</li>
 <li><a href="install.html?id=unicode">Unicode-Browser</a>: Eine App um alle Unicode-Zeichen zu erkunden. (<a href="https://github.com/Schnark/unicode">Quellcode</a>)</li>

@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /docviewer/lib/
+Disallow: /racer/racer.html
 Disallow: /rss/test/
 Disallow: /wallpaper/pages/
