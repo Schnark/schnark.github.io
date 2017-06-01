@@ -12,21 +12,16 @@ h1 {
 	width: 80px;
 }
 
-.gallery {
-	overflow: hidden;
-	border: 1px solid black;
-}
-
 .gallery img {
-	float: left;
-	width: 270px;
 	margin: 5px;
 	border: 1px solid black;
+	max-width: 270px;
 }
 
 .gallery img.landscape {
-	width: auto;
-	height: 270px;
+	max-width: 100%;
+	max-width: calc(100% - 12px);
+	max-height: 270px;
 }
 
 button, .button {
