@@ -71,7 +71,7 @@ function getScreenshots (data) {
 			url = url.slice(0, index);
 			cls = ' class="landscape"';
 		}
-		return '<img' + cls + ' src="' + data.id + '/install/' + url + '">';
+		return '<img' + cls + ' src="' + data.id + '/install/' + url + '" itemprop="screenshot">';
 	}).join('');
 }
 
@@ -149,18 +149,38 @@ function showError (id) {
 }
 
 function showInstall (data) {
-	var button, title, url;
+	var element, button, title, url;
+	element = document.getElementsByTagName('body')[0];
+	element.itemScope = true;
+	element.itemType = 'http://schema.org/WebApplication';
+
 	title = getTitle(data);
 	document.getElementById('title1').textContent = title;
-	document.getElementById('title2').textContent = title;
-	document.getElementById('icon').src = getIcon(data);
+	element = document.getElementById('title2');
+	element.textContent = title;
+	element.itemProp = 'name';
+
+	element = document.getElementById('icon');
+	element.src = getIcon(data);
+	element.itemProp = 'image';
+
 	document.getElementById('gallery-container').innerHTML = getScreenshots(data);
-	document.getElementById('desc-container').innerHTML = getDescription(data);
+
+	element = document.getElementById('desc-container');
+	element.innerHTML = getDescription(data);
+	element.itemProp = 'description';
+
 	if (getHasServiceWorker(data)) {
 		document.getElementById('inst-1').textContent += ' ' + _('inst-1-sw');
 	}
-	document.getElementById('online-button').href = getOnlineUrl(data);
-	document.getElementById('code-url').href = getCodeUrl(data);
+
+	element = document.getElementById('online-button');
+	element.href = getOnlineUrl(data);
+	element.itemProp = 'url';
+
+	element = document.getElementById('code-url');
+	element.href = getCodeUrl(data);
+	element.itemProp = 'downloadUrl';
 
 	button = document.getElementById('install-button');
 	url = getManifestUrl(data);
