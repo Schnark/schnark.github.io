@@ -141,7 +141,7 @@ function escapeHtml (str) {
 }
 
 function addToList (list, value) {
-	if (list.add) {
+	if (list && list.add) {
 		list.add(value);
 	}
 }
