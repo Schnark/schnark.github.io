@@ -140,6 +140,12 @@ function escapeHtml (str) {
 		.replace(/"/g, '&quot;');
 }
 
+function addToList (list, value) {
+	if (list.add) {
+		list.add(value);
+	}
+}
+
 function showError (id) {
 	document.getElementById('error-head').innerHTML = _('error-head');
 	document.getElementById('error-body').innerHTML = '<p>' + (id ?
@@ -152,23 +158,23 @@ function showInstall (data) {
 	var element, button, title, url;
 	element = document.getElementsByTagName('body')[0];
 	element.itemScope = true;
-	element.itemType = 'http://schema.org/WebApplication';
+	addToList(element.itemType, 'http://schema.org/WebApplication');
 
 	title = getTitle(data);
 	document.getElementById('title1').textContent = title;
 	element = document.getElementById('title2');
 	element.textContent = title;
-	element.itemProp = 'name';
+	addToList(element.itemProp, 'name');
 
 	element = document.getElementById('icon');
 	element.src = getIcon(data);
-	element.itemProp = 'image';
+	addToList(element.itemProp, 'image');
 
 	document.getElementById('gallery-container').innerHTML = getScreenshots(data);
 
 	element = document.getElementById('desc-container');
 	element.innerHTML = getDescription(data);
-	element.itemProp = 'description';
+	addToList(element.itemProp, 'description';
 
 	if (getHasServiceWorker(data)) {
 		document.getElementById('inst-1').textContent += ' ' + _('inst-1-sw');
@@ -176,11 +182,11 @@ function showInstall (data) {
 
 	element = document.getElementById('online-button');
 	element.href = getOnlineUrl(data);
-	element.itemProp = 'url';
+	addToList(element.itemProp, 'url');
 
 	element = document.getElementById('code-url');
 	element.href = getCodeUrl(data);
-	element.itemProp = 'downloadUrl';
+	addToList(element.itemProp, 'downloadUrl');
 
 	button = document.getElementById('install-button');
 	url = getManifestUrl(data);
