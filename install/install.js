@@ -174,7 +174,7 @@ function showInstall (data) {
 
 	element = document.getElementById('desc-container');
 	element.innerHTML = getDescription(data);
-	addToList(element.itemProp, 'description';
+	addToList(element.itemProp, 'description');
 
 	if (getHasServiceWorker(data)) {
 		document.getElementById('inst-1').textContent += ' ' + _('inst-1-sw');
