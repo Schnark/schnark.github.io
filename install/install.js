@@ -140,12 +140,6 @@ function escapeHtml (str) {
 		.replace(/"/g, '&quot;');
 }
 
-function addToList (list, value) {
-	if (list && list.add) {
-		list.add(value);
-	}
-}
-
 function showError (id) {
 	document.getElementById('error-head').innerHTML = _('error-head');
 	document.getElementById('error-body').innerHTML = '<p>' + (id ?
@@ -157,24 +151,24 @@ function showError (id) {
 function showInstall (data) {
 	var element, button, title, url;
 	element = document.getElementsByTagName('body')[0];
-	element.itemScope = true;
-	addToList(element.itemType, 'http://schema.org/WebApplication');
+	element.setAttribute('itemscope', '');
+	element.setAttribute('itemtype', 'http://schema.org/WebApplication');
 
 	title = getTitle(data);
 	document.getElementById('title1').textContent = title;
 	element = document.getElementById('title2');
 	element.textContent = title;
-	addToList(element.itemProp, 'name');
+	element.setAttribute('itemprop', 'name');
 
 	element = document.getElementById('icon');
 	element.src = getIcon(data);
-	addToList(element.itemProp, 'image');
+	element.setAttribute('itemprop', 'image');
 
 	document.getElementById('gallery-container').innerHTML = getScreenshots(data);
 
 	element = document.getElementById('desc-container');
 	element.innerHTML = getDescription(data);
-	addToList(element.itemProp, 'description');
+	element.setAttribute('itemprop', 'description');
 
 	if (getHasServiceWorker(data)) {
 		document.getElementById('inst-1').textContent += ' ' + _('inst-1-sw');
@@ -182,11 +176,11 @@ function showInstall (data) {
 
 	element = document.getElementById('online-button');
 	element.href = getOnlineUrl(data);
-	addToList(element.itemProp, 'url');
+	element.setAttribute('itemprop', 'url');
 
 	element = document.getElementById('code-url');
 	element.href = getCodeUrl(data);
-	addToList(element.itemProp, 'downloadUrl');
+	element.setAttribute('itemprop', 'downloadUrl');
 
 	button = document.getElementById('install-button');
 	url = getManifestUrl(data);
