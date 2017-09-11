@@ -111,7 +111,7 @@ function updateInstallButton (button, status, url) {
 				updateInstallButton(button, STATUS_IS_INSTALLED, url);
 			};
 			request.onerror = function () {
-				updateInstallButton(button, STATUS_CAN_INSTALL, url);
+				updateInstallButton(button, STATUS_NO_INSTALL, url);
 			};
 			updateInstallButton(button, STATUS_IS_INSTALLING, url);
 		};
@@ -140,6 +140,10 @@ function escapeHtml (str) {
 		.replace(/"/g, '&quot;');
 }
 
+function limitedConnection () {
+	return navigator && navigator.connection && navigator.connection.type === 'cellular';
+}
+
 function showError (id) {
 	document.getElementById('error-head').innerHTML = _('error-head');
 	document.getElementById('error-body').innerHTML = '<p>' + (id ?
@@ -149,7 +153,7 @@ function showError (id) {
 }
 
 function showInstall (data) {
-	var element, button, title, url;
+	var element, button, title, screenshots, url;
 	element = document.getElementsByTagName('body')[0];
 	element.setAttribute('itemscope', '');
 	element.setAttribute('itemtype', 'http://schema.org/WebApplication');
@@ -164,7 +168,15 @@ function showInstall (data) {
 	element.src = getIcon(data);
 	element.setAttribute('itemprop', 'image');
 
-	document.getElementById('gallery-container').innerHTML = getScreenshots(data);
+	element = document.getElementById('gallery-container');
+	screenshots = getScreenshots(data);
+	if (limitedConnection()) {
+		element.dataset.html = screenshots;
+		element.innerHTML = '<button id="show-screenshots">' + _('show-screenshots') + '</button>';
+		document.getElementById('show-screenshots').addEventListener('click', showScreenshots);
+	} else {
+		element.innerHTML = screenshots;
+	}
 
 	element = document.getElementById('desc-container');
 	element.innerHTML = getDescription(data);
@@ -189,6 +201,11 @@ function showInstall (data) {
 	});
 	document.getElementById('section-error').hidden = true;
 	document.getElementById('section-install').hidden = false;
+}
+
+function showScreenshots () {
+	var container = document.getElementById('gallery-container');
+	container.innerHTML = container.dataset.html;
 }
 
 function init () {
