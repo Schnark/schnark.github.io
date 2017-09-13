@@ -3,5 +3,4 @@ Disallow: /docviewer/lib/
 Disallow: /racer/racer.html
 Disallow: /rss/test/
 Disallow: /wallpaper/pages/
-Disallow: /world-map-skiller/index.html
 Disallow: /js13kgames-2017/min/
