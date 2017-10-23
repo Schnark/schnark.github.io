@@ -1,9 +1,17 @@
 html {
 	font-family: sans-serif;
+	background-color: #fff;
+	color: #000;
 }
 
 h1 {
 	text-align: center;
+	color: #444;
+}
+
+h1.main,
+h1 .main {
+	color: #000;
 }
 
 #icon {

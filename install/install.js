@@ -132,6 +132,18 @@ function updateInstallButton (button, status, url) {
 	button.innerHTML = label;
 }
 
+function makeTitle (element, title) {
+	var sep = title.indexOf(' – ');
+	if (sep === -1) {
+		element.textContent = title;
+		element.setAttribute('itemprop', 'name');
+		element.setAttribute('class', 'main');
+	} else {
+		element.innerHTML = '<span itemprop="name" class="main">' + escapeHtml(title.slice(0, sep)) + '</span>' +
+			escapeHtml(title.slice(sep));
+	}
+}
+
 function escapeHtml (str) {
 	return str
 		.replace(/&/g, '&amp;')
@@ -160,9 +172,7 @@ function showInstall (data) {
 
 	title = getTitle(data);
 	document.getElementById('title1').textContent = title;
-	element = document.getElementById('title2');
-	element.textContent = title;
-	element.setAttribute('itemprop', 'name');
+	makeTitle(document.getElementById('title2'), title);
 
 	element = document.getElementById('icon');
 	element.src = getIcon(data);
