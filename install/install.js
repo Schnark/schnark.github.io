@@ -71,7 +71,11 @@ function getScreenshots (data) {
 			url = url.slice(0, index);
 			cls = ' class="landscape"';
 		}
-		return '<img' + cls + ' src="' + data.id + '/install/' + url + '" itemprop="screenshot">';
+		//We use alt="". If the image is not available, it's not really
+		//missing. On limited connections it is omitted on purpose, so
+		//omitting it on other occassions, too, is acceptable.
+		return '<img' + cls + ' src="' + data.id + '/install/' + url +
+			'" alt="" itemprop="screenshot">';
 	}).join('');
 }
 
