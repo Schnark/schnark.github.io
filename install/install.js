@@ -90,8 +90,26 @@ function getDescription (data) {
 	return desc;
 }
 
-function getHasServiceWorker (data) {
-	return data.serviceworker;
+function getRestrictions (data) {
+	var lang = _('langcode'),
+		restrictions = data.restrictions,
+		msg = '', key = 'restrictions';
+	if (restrictions) {
+		msg = (restrictions[lang] || restrictions.en) + ' ';
+		key += '-yes';
+	} else {
+		key += '-no';
+	}
+	if (data.serviceworker) {
+		if (navigator.serviceWorker) {
+			key += '-sw';
+		} else {
+			key += '-swunsupported';
+		}
+	} else {
+		key += '-nosw';
+	}
+	return msg + _(key);
 }
 
 function getOnlineUrl (data) {
@@ -196,9 +214,7 @@ function showInstall (data) {
 	element.innerHTML = getDescription(data);
 	element.setAttribute('itemprop', 'description');
 
-	if (getHasServiceWorker(data)) {
-		document.getElementById('inst-1').textContent += ' ' + _('inst-1-sw');
-	}
+	document.getElementById('inst-1').textContent += ' ' + getRestrictions(data);
 
 	element = document.getElementById('online-button');
 	element.href = getOnlineUrl(data);
