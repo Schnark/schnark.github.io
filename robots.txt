@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /legal.html
 Disallow: /docviewer/lib/
 Disallow: /racer/i.html
 Disallow: /racer/racer.html
