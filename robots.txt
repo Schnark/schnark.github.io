@@ -6,3 +6,4 @@ Disallow: /racer/racer.html
 Disallow: /rss/test/
 Disallow: /wallpaper/pages/
 Disallow: /js13kgames-2017/min/
+Disallow: /js13kgames-2018/min/
