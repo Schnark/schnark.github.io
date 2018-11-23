@@ -55,7 +55,6 @@ p.langselect {
 }
 
 ul.icons {
-	overflow: hidden;
 	background-color: #ddf;
 	border: 4px ridge silver;
 	box-shadow: 0 0 5px black;
@@ -75,6 +74,15 @@ ul.icons {
 	height: 60px;
 	border: none;
 	margin: 10px;
+}
+
+ul.icons::after {
+	content: "";
+	display: block;
+	clear: both;
+	height: 45px;
+	background: black radial-gradient(circle closest-side at center, rgba(192,192,192,0) 0%, rgba(192,192,192,0) 45%, rgba(192,192,192,1) 50%, rgba(192,192,192,1) 55%, rgba(192,192,192,0) 60%, rgba(192,192,192,0) 100%);
+	border-radius: 0px 0px 20px 20px;
 }
 
 address {
@@ -108,6 +116,7 @@ address p {
 <li><a href="install.html?id=music-editor"><img src="music-editor/res/icon-128.png" alt="Music Editor"></a></li>
 <li><a href="install.html?id=musicmetadata"><img src="musicmetadata/icon-128.png" alt="Music Metadata"></a></li>
 <li><a href="install.html?id=racer"><img src="racer/i.png" alt="Racer"></a></li>
+<li><a href="install.html?id=random"><img src="random/res/icon-128.png" alt="Random"></a></li>
 <li><a href="install.html?id=redirector"><img src="redirector/res/icon-128.png" alt="Redirector"></a></li>
 <li><a href="install.html?id=rss"><img src="rss/icons/icon-128.png" alt="Firri"></a></li>
 <li><a href="install.html?id=ruler-protractor"><img src="ruler-protractor/icons/icon-128.png" alt="Ruler, Protractor"></a></li>
@@ -138,6 +147,7 @@ address p {
 <li><a href="install.html?id=music-editor">Music Editor</a>: Write down tunes and listen to them. (<a href="https://github.com/Schnark/music-editor">source</a>)</li>
 <li><a href="install.html?id=musicmetadata">Music Metadata</a>: Edit metadata of audio files. (<a href="https://github.com/Schnark/musicmetadata">source</a>)</li>
 <li><a href="install.html?id=racer">Racer</a>: A tiny racer app. (<a href="https://github.com/Schnark/racer">source</a>)</li>
+<li><a href="install.html?id=random">Random</a>: Generate random values. (<a href="https://github.com/Schnark/random">source</a>)</li>
 <li><a href="install.html?id=redirector">Redirector</a>: An app to redirect web pages to other web services. (<a href="https://github.com/Schnark/redirector">source</a>)</li>
 <li><a href="install.html?id=rss">Firri</a>: A feed reader for RSS and Atom feeds. (<a href="https://github.com/Schnark/rss">source</a>)</li>
 <li><a href="install.html?id=ruler-protractor">Ruler, Protractor</a>: Ruler and protractor. (<a href="https://github.com/Schnark/ruler-protractor">source</a>)</li>
@@ -168,6 +178,7 @@ address p {
 <li><a href="install.html?id=music-editor">Musikeditor</a>: Ermöglicht es, Melodien aufzuschreiben und anzuhören. (<a href="https://github.com/Schnark/music-editor">Quellcode</a>)</li>
 <li><a href="install.html?id=musicmetadata">Musik-Metadaten</a>: Ermöglicht es, Metadaten in Audio-Dateien zu bearbeiten. (<a href="https://github.com/Schnark/musicmetadata">Quellcode</a>)</li>
 <li><a href="install.html?id=racer">Racer</a>: Ein winziges Autorennen. (<a href="https://github.com/Schnark/racer">Quellcode</a>)</li>
+<li><a href="install.html?id=random">Zufall</a>: Erzeugt Zufallswerte. (<a href="https://github.com/Schnark/random">Quellcode</a>)</li>
 <li><a href="install.html?id=redirector">Redirector</a>: Eine App um Webseiten zu anderen Webdiensten weiterzuleiten. (<a href="https://github.com/Schnark/redirector">Quellcode</a>)</li>
 <li><a href="install.html?id=rss">Firri</a>: Ein Feedreader für RSS- und Atom-Feeds. (<a href="https://github.com/Schnark/rss">Quellcode</a>)</li>
 <li><a href="install.html?id=ruler-protractor">Lineal, Winkelmesser</a>: Lineal und Winkelmesser. (<a href="https://github.com/Schnark/ruler-protractor">Quellcode</a>)</li>
