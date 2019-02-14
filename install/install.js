@@ -113,7 +113,7 @@ function getRestrictions (data) {
 }
 
 function getOnlineUrl (data) {
-	return data.id + '/index.html';
+	return data.id + '/' + (data.index || 'index.html');
 }
 
 function getCodeUrl (data) {
@@ -121,7 +121,7 @@ function getCodeUrl (data) {
 }
 
 function getManifestUrl (data) {
-	return 'https://schnark.github.io/' + data.id  + '/github.manifest.webapp';
+	return 'https://schnark.github.io/' + data.id  + '/' + (data.manifest || 'github.manifest.webapp');
 }
 
 function updateInstallButton (button, status, url) {
