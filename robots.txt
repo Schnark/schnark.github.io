@@ -4,6 +4,8 @@ Disallow: /docviewer/lib/
 Disallow: /racer/i.html
 Disallow: /racer/racer.html
 Disallow: /rss/test/
+Disallow: /stundenbuch/
 Disallow: /wallpaper/pages/
 Disallow: /js13kgames-2017/min/
 Disallow: /js13kgames-2018/min/
+Disallow: /js13kgames-2019/min/
