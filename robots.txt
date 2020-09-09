@@ -6,6 +6,8 @@ Disallow: /racer/racer.html
 Disallow: /rss/test/
 Disallow: /stundenbuch/
 Disallow: /wallpaper/pages/
+Disallow: /ffos-simulator/
 Disallow: /js13kgames-2017/min/
 Disallow: /js13kgames-2018/min/
 Disallow: /js13kgames-2019/min/
+Disallow: /js13kgames-2020/min/
