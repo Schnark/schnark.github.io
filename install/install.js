@@ -116,6 +116,10 @@ function getOnlineUrl (data) {
 	return data.id + '/' + (data.index || 'index.html');
 }
 
+function getSimulatorUrl (data) {
+	return 'https://schnark.github.io/ffos-simulator/index.html?mode=app&app=' + data.id;
+}
+
 function getCodeUrl (data) {
 	return 'https://github.com/Schnark/' + data.id;
 }
@@ -219,6 +223,12 @@ function showInstall (data) {
 	element = document.getElementById('online-button');
 	element.href = getOnlineUrl(data);
 	element.setAttribute('itemprop', 'url');
+
+	if (navigator.serviceWorker) {
+		document.getElementById('simulator-button').href = getSimulatorUrl(data);
+	} else {
+		document.getElementById('ffos-simulator').hidden = true;
+	}
 
 	element = document.getElementById('code-url');
 	element.href = getCodeUrl(data);
