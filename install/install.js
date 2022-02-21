@@ -1,270 +1,146 @@
-/*global _ */
+/*global unescape*/
 (function () {
 "use strict";
 
-var STATUS_NO_INSTALL = 0,
-	STATUS_IS_INSTALLED = 1,
-	STATUS_CAN_INSTALL = 2,
-	STATUS_IS_INSTALLING = 3;
+var base = 'https://schnark.github.io/';
 
-function loadData (id, callback) {
-	if (!(/^[a-z0-9\-]+$/i.test(id))) {
-		callback();
-		return;
-	}
-
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', id + '/install/install.json');
-	xhr.responseType = 'json';
-	xhr.onload = function () {
-		var response = xhr.response;
-		if (typeof response === 'string') {
-		//just in case the browser doesn't understand responseType = 'json'
-			try {
-				response = JSON.parse(response);
-			} catch (e) {
-				response = null;
+/*
+var fakeMozApps = {
+	checkInstalled: function (manifest) {
+		var isCorrectUrl = /^https?:\/\/.*\.webapp$/.test(manifest),
+			installed = {
+				'https://schnark.github.io/partial-firefox-marketplace-backup/backup/webserver.webapp': true
+			};
+		return fakeMozApps._makeRequest(function () {
+			return [isCorrectUrl, manifest in installed];
+		});
+	},
+	install: function (manifest) {
+		var isCorrectUrl = /^https?:\/\/.*\.webapp$/.test(manifest);
+		return fakeMozApps._makeRequest(function () {
+			return [isCorrectUrl];
+		});
+	},
+	installPackage: function (manifest) {
+		var isCorrectUrl =
+			/^https:\/\/schnark.github.io\/partial-firefox-marketplace-backup\/backup\/.*\.webapp$/.test(manifest);
+		return fakeMozApps._makeRequest(function () {
+			return [isCorrectUrl];
+		});
+	},
+	_makeRequest: function (async, time) {
+		var request = {};
+		setTimeout(function () {
+			var result = async();
+			request.result = result[1];
+			if (result[0]) {
+				if (request.onsuccess) {
+					request.onsuccess();
+				}
+			} else {
+				if (request.onerror) {
+					request.onerror();
+				}
 			}
-		}
-		callback(response);
-	};
-	xhr.onerror = function () {
-		callback();
-	};
-
-	xhr.send();
+		}, time || 1000);
+		return request;
+	}
 }
 
-function checkInstallStatus (url, callback) {
+navigator.mozApps = fakeMozApps;
+*/
+
+function makeAbsolute (url) {
+	if (url.indexOf('/') === -1) {
+		url = base + 'partial-firefox-marketplace-backup/backup/' + url;
+	}
+	return url;
+}
+
+/*keep this in sync with the simulator code*/
+function uToA (u) {
+	return btoa(
+		unescape(encodeURIComponent(u.replace(/\0+$/, '')))
+	).replace(/\s+/g, '')
+	.replace(/\+/g, '-').replace(/\//g, '_')
+	.replace(/\=+/g, '');
+}
+
+function makeSimulatorId (url) {
+	return 'url@' + uToA(url);
+}
+
+function checkInstalled (manifest, callback) {
 	var request;
-	if (!navigator.mozApps || !navigator.mozApps.installPackage) {
-		callback(STATUS_NO_INSTALL);
-		return;
-	}
-	if (navigator.mozApps.checkInstalled) {
-		request = navigator.mozApps.checkInstalled(url);
-		request.onerror = function () {
-			callback(STATUS_NO_INSTALL);
-		};
+	if (manifest.slice(0, base.length) === base) {
+		request = navigator.mozApps.checkInstalled(manifest);
 		request.onsuccess = function () {
-			if (request.result) {
-				callback(STATUS_IS_INSTALLED);
-			}
+			callback(request.result);
 		};
-	}
-	callback(STATUS_CAN_INSTALL);
-}
-
-function getTitle (data) {
-	var lang = _('langcode');
-	return data.title[lang] || data.title.en;
-}
-
-function getIcon (data) {
-	return data.id + '/' + data.icon;
-}
-
-function getScreenshots (data) {
-	return data.screenshots.map(function (url) {
-		var index = url.indexOf('#landscape'), cls = '';
-		if (index > -1) {
-			url = url.slice(0, index);
-			cls = ' class="landscape"';
-		}
-		//We use alt="". If the image is not available, it's not really
-		//missing. On limited connections it is omitted on purpose, so
-		//omitting it on other occassions, too, is acceptable.
-		return '<img' + cls + ' src="' + data.id + '/install/' + url +
-			'" alt="" itemprop="screenshot">';
-	}).join('');
-}
-
-function getDescription (data) {
-	var lang = _('langcode'), desc;
-	desc = data.desc[lang] || data.desc.en;
-	if (Array.isArray(desc)) {
-		desc = desc.map(function (d) {
-			return '<p>' + d + '</p>';
-		}).join('');
-	}
-	return desc;
-}
-
-function getRestrictions (data) {
-	var lang = _('langcode'),
-		restrictions = data.restrictions,
-		msg = '', key = 'restrictions';
-	if (restrictions) {
-		msg = (restrictions[lang] || restrictions.en) + ' ';
-		key += '-yes';
 	} else {
-		key += '-no';
+		callback();
 	}
-	if (data.serviceworker) {
-		if (navigator.serviceWorker) {
-			key += '-sw';
-		} else {
-			key += '-swunsupported';
-		}
-	} else {
-		key += '-nosw';
-	}
-	return msg + _(key);
 }
 
-function getOnlineUrl (data) {
-	return data.id + '/' + (data.index || 'index.html');
-}
-
-function getSimulatorUrl (data) {
-	return 'https://schnark.github.io/ffos-simulator/index.html?mode=app&app=' + data.id;
-}
-
-function getCodeUrl (data) {
-	return 'https://github.com/Schnark/' + data.id;
-}
-
-function getManifestUrl (data) {
-	return 'https://schnark.github.io/' + data.id  + '/' + (data.manifest || 'github.manifest.webapp');
-}
-
-function updateInstallButton (button, status, url) {
-	var label;
-	if (status === STATUS_CAN_INSTALL) {
-		button.onclick = function () {
-			var request = navigator.mozApps.installPackage(url);
-			request.onsuccess = function () {
-				updateInstallButton(button, STATUS_IS_INSTALLED, url);
-			};
-			request.onerror = function () {
-				updateInstallButton(button, STATUS_NO_INSTALL, url);
-			};
-			updateInstallButton(button, STATUS_IS_INSTALLING, url);
-		};
+function updateButtons () {
+	var buttons, i, mozApps, serviceWorker;
+	mozApps = navigator.mozApps && navigator.mozApps.checkInstalled;
+	serviceWorker = !mozApps && navigator.serviceWorker;
+	if (!mozApps && !serviceWorker) {
 		return;
 	}
-	button.disabled = true;
-	button.onclick = undefined;
-	switch (status) {
-	case STATUS_IS_INSTALLED:
-		label = _('already-installed') + '&nbsp;<span style="color: green;">✔</span>';
-		break;
-	case STATUS_IS_INSTALLING:
-		label = _('is-installing');
-		break;
-	default:
-		label = _('no-install');
-	}
-	button.innerHTML = label;
-}
-
-function makeTitle (element, title) {
-	var sep = title.indexOf(' – ');
-	if (sep === -1) {
-		element.textContent = title;
-		element.setAttribute('itemprop', 'name');
-		element.setAttribute('class', 'main');
-	} else {
-		element.innerHTML = '<span itemprop="name" class="main">' + escapeHtml(title.slice(0, sep)) + '</span>' +
-			escapeHtml(title.slice(sep));
+	buttons = document.getElementsByTagName('button');
+	for (i = 0; i < buttons.length; i++) {
+		if (buttons[i].dataset.manifest) {
+			if (mozApps) {
+				updateButton(buttons[i]);
+			} else if (/*serviceWorker && */!buttons[i].dataset.web) {
+				updateButtonSimulator(buttons[i]);
+			}
+		}
 	}
 }
 
-function escapeHtml (str) {
-	return str
-		.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
-		.replace(/"/g, '&quot;');
-}
-
-function limitedConnection () {
-	return navigator && navigator.connection && navigator.connection.type === 'cellular';
-}
-
-function showError (id) {
-	document.getElementById('error-head').innerHTML = _('error-head');
-	document.getElementById('error-body').innerHTML = '<p>' + (id ?
-		_('error-body', {id: escapeHtml(id)}) :
-		_('error-body-no-id')
-	) + '</p>';
-}
-
-function showInstall (data) {
-	var element, button, title, screenshots, url;
-	element = document.getElementsByTagName('body')[0];
-	element.setAttribute('itemscope', '');
-	element.setAttribute('itemtype', 'http://schema.org/WebApplication');
-
-	title = getTitle(data);
-	document.getElementById('title1').textContent = title;
-	makeTitle(document.getElementById('title2'), title);
-
-	element = document.getElementById('icon');
-	element.src = getIcon(data);
-	element.setAttribute('itemprop', 'image');
-
-	element = document.getElementById('gallery-container');
-	screenshots = getScreenshots(data);
-	if (limitedConnection()) {
-		element.dataset.html = screenshots;
-		element.innerHTML = '<button id="show-screenshots">' + _('show-screenshots') + '</button>';
-		document.getElementById('show-screenshots').addEventListener('click', showScreenshots);
-	} else {
-		element.innerHTML = screenshots;
+function updateButton (button) {
+	var method = button.dataset.web ? 'install' : 'installPackage',
+		manifest = makeAbsolute(button.dataset.manifest);
+	if (!navigator.mozApps[method]) {
+		return;
 	}
-
-	element = document.getElementById('desc-container');
-	element.innerHTML = getDescription(data);
-	element.setAttribute('itemprop', 'description');
-
-	document.getElementById('inst-1').textContent += ' ' + getRestrictions(data);
-
-	element = document.getElementById('online-button');
-	element.href = getOnlineUrl(data);
-	element.setAttribute('itemprop', 'url');
-
-	if (navigator.serviceWorker) {
-		document.getElementById('simulator-button').href = getSimulatorUrl(data);
-	} else {
-		document.getElementById('ffos-simulator').hidden = true;
-	}
-
-	element = document.getElementById('code-url');
-	element.href = getCodeUrl(data);
-	element.setAttribute('itemprop', 'downloadUrl');
-
-	button = document.getElementById('install-button');
-	url = getManifestUrl(data);
-	checkInstallStatus(url, function (result) {
-		updateInstallButton(button, result, url);
-	});
-	document.getElementById('section-error').hidden = true;
-	document.getElementById('section-install').hidden = false;
-}
-
-function showScreenshots () {
-	var container = document.getElementById('gallery-container');
-	container.innerHTML = container.dataset.html;
-}
-
-function init () {
-	var id = /.*[&?]id=([^&]*)/.exec(location.search || '');
-	id = id ? decodeURIComponent(id[1]) : '';
-	loadData(id, function (data) {
-		if (!data) {
-			showError(id);
+	checkInstalled(manifest, function (installed) {
+		var request;
+		if (installed) {
+			button.innerHTML = 'Already installed!&nbsp;<span style="color: green;">✔</span>';
 		} else {
-			data.id = id;
-			showInstall(data);
+			button.addEventListener('click', function () {
+				button.disabled = true;
+				button.innerHTML = 'Installing …';
+				request = navigator.mozApps[method](manifest);
+				request.onerror = function () {
+					button.innerHTML = 'An error occured';
+				};
+				request.onsuccess = function () {
+					button.innerHTML = 'Successfully installed!&nbsp;<span style="color: green;">✔</span>';
+				};
+			});
+			button.innerHTML = 'Install';
+			button.disabled = false;
 		}
 	});
 }
 
-window.addEventListener('localized', function () {
-	document.documentElement.lang = document.webL10n.getLanguage();
-	document.documentElement.dir = document.webL10n.getDirection();
-	init();
-}, false);
+function updateButtonSimulator (button) {
+	var manifest = makeAbsolute(button.dataset.manifest), id = makeSimulatorId(manifest);
+	button.addEventListener('click', function () {
+		location.href = base + 'ffos-simulator/index.html?mode=app&app=' + id;
+	});
+	button.innerHTML = 'Run in FFOS simulator';
+	button.disabled = false;
+}
+
+updateButtons();
+if (location.search === '?debug') {
+	document.getElementsByTagName('body')[0].className = 'debug';
+}
 
 })();
