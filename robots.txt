@@ -1,4 +1,5 @@
 Sitemap: https://schnark.github.io/sitemap.xml
+Sitemap: https://schnark.github.io/lewis-carroll/html/sitemap.xml
 
 User-agent: *
 Disallow: /legal.html
