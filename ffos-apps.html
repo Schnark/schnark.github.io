@@ -1,55 +1,11 @@
 <!DOCTYPE html>
 <html><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<link rel="shortcut icon" href="main-favicon.ico">
 <title>Apps for Firefox OS / Apps für Firefox OS</title>
+<meta name="viewport" content="width=device-width">
+<link rel="shortcut icon" href="ffos-favicon.ico">
+<link rel="stylesheet" href="main.css">
 <style>
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font: 16px sans-serif;
-	line-height: 1.6;
-	background-color: #fff;
-	color: #222;
-	padding-left: 2em;
-	padding-right: 2em;
-	min-width: 15em;
-	max-width: 60em;
-	margin: auto;
-}
-
-a {
-	text-decoration: none;
-	color: #0645ad;
-}
-
-a:visited {
-	color: #0b0080;
-}
-
-a:hover, a:focus {
-	text-decoration: underline;
-}
-
-h1 {
-	font-size: 150%;
-	font-weight: bold;
-	margin-top: 1em;
-}
-
-p {
-	max-width: 50em;
-}
-
-ul {
-	line-height: 2;
-	margin: 1em 2em;
-}
-
 p.langselect {
 	text-align: right;
 }
@@ -83,19 +39,6 @@ ul.icons::after {
 	height: 45px;
 	background: black radial-gradient(circle closest-side at center, rgba(192,192,192,0) 0%, rgba(192,192,192,0) 45%, rgba(192,192,192,1) 50%, rgba(192,192,192,1) 55%, rgba(192,192,192,0) 60%, rgba(192,192,192,0) 100%);
 	border-radius: 0px 0px 20px 20px;
-}
-
-address {
-	margin-top: 4em;
-	border-top: thin solid;
-	font-size: small;
-	font-variant: normal;
-	font-style: normal;
-	opacity: 0.9;
-}
-
-address p {
-	padding-bottom: 1em;
 }
 </style>
 </head><body>
@@ -134,6 +77,7 @@ address p {
 <section id="en" lang="en">
 <h1>Apps for Firefox OS</h1>
 <p>This page lists my apps for Firefox OS. Since they are basically web apps, you can also install and use them on other devices, including your desktop browser (at least to some degree). All these apps are still maintained and will receive updates. They all are free and open source, without any ads or tracking (some of them do store data, but only your preferences etc., and these never will be shared with anyone, they are only stored locally on your device).</p>
+<p>Some apps by other developers are available from my <a href="partial-firefox-marketplace-backup/index.html">partial backup of the Firefox Marketplace</a>. To run FFOS apps in modern browsers, you can also use my <a href="ffos-simulator/index.html">FFOS simulator</a>.</p>
 <p><strong>Note:</strong> Due to some strange bug it may happen that you are informed about an update after you installed an app, even if there is none. Installing the update will seem to fail (the icon is replaced by a “try again” button). In this case, just restart your device, and the app should work correctly. If you understand how to properly fix this bug, please tell me about it.</p>
 <noscript><p><strong>Note 2:</strong> The installer and most of the apps require JavaScript, so please enable it in your browser.</p></noscript>
 <ul>
@@ -167,6 +111,7 @@ address p {
 <section id="de" lang="de">
 <h1>Apps für Firefox OS</h1>
 <p>Diese Seite listet meine Apps für Firefox OS auf. Da es sich dabe im Grunde um Webapps handelt, kannst du auch auf anderen Geräten installieren und nutzen, einschließlich deinem Desktop-Browser (zumindest teilweise). Alle diese Apps werden noch weiterentwickelt und erhalten Aktualisierungen. Alle sind kostenlos und quelloffen, ohne jegliche Werbung oder Tracking (einige speichern Daten, aber nur Benutzereinstellungen etc., die niemals an irgendwen weitergegeben werden, sie werden ausschließlich lokal auf deinem Gerät gespeichert). Die meisten Apps besitzen eine deutsche Übersetzung, nur einige wenige sind nur auf Englisch verfügbar.</p>
+<p>Einige Apps von anderen Entwicklern sind in meiner <a href="partial-firefox-marketplace-backup/index.html">teilweisen Sicherung des Firefox Marketplace</a> verfügbar. Um FFOS-Apps in modernen Browsern auszuführen, kannst du auch meinen <a href="ffos-simulator/index.html">FFOS-Simulator</a> verwenden.</p>
 <p><strong>Hinweis:</strong> Ein merkwürdiger Fehler kann dazu führen, dass nach dem Installieren einer App eine Aktualisierung gemeldet wird, obwohl es keine gibt. Das Installieren der Aktualisierung scheint dann fehlzuschlagen (das Symbol wird durch eine „Nochmal versuchen“-Schaltfläche ersetzt). In diesem Fall reicht es, das Gerät neu zu starten, anschließend sollte die App korrekt funktionieren. Falls du weißt, wie der Fehler ganz behoben werden kann, teile es mir bitte mit.</p>
 <noscript><p><strong>Hinweis 2:</strong> Die Installation und die meisten Apps benötigen JavaScript, bitte aktiviere es in deinem Browser.</p></noscript>
 <ul>
@@ -197,12 +142,4 @@ address p {
 <li><a href="install.html?id=world-map-skiller">World Map Skiller</a>: Eine App um die Länder der Erde zu lernen. (<a href="https://github.com/Schnark/world-map-skiller">Quellcode</a>)</li>
 </ul>
 </section>
-<address>
-<p lang="en">
-All these apps and more contributions are also listed on <a href="https://github.com/Schnark">my profile page</a> on <a href="https://github.com">GitHub</a>. If you want to contact me without a GitHub account, you can send an e-mail to my Gmail account called <code>listenleser</code>. You can use both English and German.
-</p>
-<p lang="de">
-Alle diese Apps und weitere Beiträge sind auch auf <a href="https://github.com/Schnark">meiner Profilseite</a> bei <a href="https://github.com">GitHub</a> aufgelistet. Wenn du mich ohne ein GitHub-Konto kontaktieren willst, kannst du eine E-Mail an mein Gmail-Konto senden, das den Namen <code>listenleser</code> hat. Du kannst sowohl Deutsch als auch Englisch verwenden. <a href="legal.html">Rechtliches Blabla</a> für diejenigen, die so etwas gerne lesen.
-</p>
-</address>
 </body></html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+	<circle r="4.5" cx="4.8" cy="4.8" fill="#ed9287" />
+	<circle r="4.5" cx="14.4" cy="4.8" fill="#ed9287" />
+	<circle r="4.5" cx="24" cy="4.8" fill="#a92919" />
+	<circle r="4.5" cx="33.6" cy="4.8" fill="#a92919" />
+	<circle r="4.5" cx="43.2" cy="4.8" fill="#ed9287" />
+	<circle r="4.5" cx="4.8" cy="14.4" fill="#ed9287" />
+	<circle r="4.5" cx="14.4" cy="14.4" fill="#a92919" />
+	<circle r="4.5" cx="24" cy="14.4" fill="#ed9287" />
+	<circle r="4.5" cx="33.6" cy="14.4" fill="#ed9287" />
+	<circle r="4.5" cx="43.2" cy="14.4" fill="#ed9287" />
+	<circle r="4.5" cx="4.8" cy="24" fill="#ed9287" />
+	<circle r="4.5" cx="14.4" cy="24" fill="#ed9287" />
+	<circle r="4.5" cx="24" cy="24" fill="#a92919" />
+	<circle r="4.5" cx="33.6" cy="24" fill="#ed9287" />
+	<circle r="4.5" cx="43.2" cy="24" fill="#ed9287" />
+	<circle r="4.5" cx="4.8" cy="33.6" fill="#ed9287" />
+	<circle r="4.5" cx="14.4" cy="33.6" fill="#ed9287" />
+	<circle r="4.5" cx="24" cy="33.6" fill="#ed9287" />
+	<circle r="4.5" cx="33.6" cy="33.6" fill="#a92919" />
+	<circle r="4.5" cx="43.2" cy="33.6" fill="#ed9287" />
+	<circle r="4.5" cx="4.8" cy="43.2" fill="#ed9287" />
+	<circle r="4.5" cx="14.4" cy="43.2" fill="#a92919" />
+	<circle r="4.5" cx="24" cy="43.2" fill="#a92919" />
+	<circle r="4.5" cx="33.6" cy="43.2" fill="#ed9287" />
+	<circle r="4.5" cx="43.2" cy="43.2" fill="#ed9287" />
+</svg>

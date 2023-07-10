@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Schnark’s Homepage</title>
+<meta name="viewport" content="width=device-width">
+<link rel="icon" href="main-favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="main-favicon.svg" sizes="any" type="image/svg+xml">
+<link rel="stylesheet" href="main.css">
+<style>
+h1 {
+	text-align: center;
+	margin: 0.5em;
+}
+
+a.big {
+	display: block;
+	color: inherit !important;
+	text-decoration: none !important;
+	border: solid thin;
+	border-radius: 5px;
+	min-height: 4.5em;
+	padding: 0.5em 0.5em 0.5em 6em;
+	margin: 2em 0;
+	position: relative;
+}
+
+a.big:hover,
+a.big:focus,
+a.big:active {
+	border-color: #226;
+	transition: all 0.5s;
+	box-shadow: 0 0 5px #00f;
+}
+
+a.big h2 {
+	margin-top: 0;
+}
+
+a.big img {
+	width: 64px;
+	position: absolute;
+	top: 0.75em;
+	left: 0.75em;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+@keyframes img {
+	0% {
+		transform: none;
+	}
+	25% {
+		transform: rotate(5deg) scale(1.05);
+	}
+	50% {
+		transform: rotate(-2deg) scale(1.1);
+	}
+	75% {
+		transform: rotate(5deg) scale(1.15);
+	}
+	100% {
+		transform: scale(1.2);
+	}
+}
+
+a.big:hover img,
+a.big:focus img,
+a.big:active img {
+	animation: img 0.5s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+address {
+	margin-top: 4em;
+	border-top: thin solid;
+	font-size: small;
+	font-variant: normal;
+	font-style: normal;
+	opacity: 0.9;
+}
+
+address p {
+	padding-bottom: 1em;
+}
+</style>
+</head><body>
+<h1>Schnark’s Homepage</h1>
+
+<p>Welcome to my homepage! Here is an overview over my projects.</p>
+
+<a href="ffos-apps.html" class="big">
+<h2>Apps for Firefox OS</h2>
+<img alt="" src="ffos-favicon.ico">
+<p>I developed several apps for FFOS. Since they are based on web technologies, most of them also run in any browser. <span class="more">→ more</span></p>
+</a>
+
+<a href="lewis-carroll/html/index.html" class="big">
+<h2>The (almost really) Complete Works of Lewis Carroll</h2>
+<img alt="" src="lewis-carroll/res/favicon.svg">
+<p>A collection of the works of Lewis Carroll, both as HTML and PDF, with all images and many almost unknown works. <span class="more">→ more</span></p>
+</a>
+
+<h2>And more!</h2>
+<p>That’s not all! There is also Carroll’s interactive story about <a href="mr-c-mr-t/">Mr.&nbsp;C and Mr.&nbsp;T</a>, many games for the <a href="https://js13kgames.com/">js13k Games competition</a>, and other projects, which are all listed in <a href="overview.html">this overview</a>.</p>
+
+<address>
+<p>
+All these projects and more contributions are also listed on <a href="https://github.com/Schnark">my profile page</a> on <a href="https://github.com">GitHub</a>. If you want to contact me without a GitHub account, you can send an e-mail to my Gmail account called <code>listenleser</code>. You can use both English and German.
+</p>
+<p lang="de">
+Alle diese Projekte und weitere Beiträge sind auch auf <a href="https://github.com/Schnark">meiner Profilseite</a> bei <a href="https://github.com">GitHub</a> aufgelistet. Wenn du mich ohne ein GitHub-Konto kontaktieren willst, kannst du eine E-Mail an mein Gmail-Konto senden, das den Namen <code>listenleser</code> hat. Du kannst sowohl Deutsch als auch Englisch verwenden. <a href="legal.html">Rechtliches Blabla</a> für diejenigen, die so etwas gerne lesen.
+</p>
+</address>
+</body></html>
