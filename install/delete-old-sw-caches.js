@@ -5,7 +5,8 @@
 var OLD_SW_CACHES = [
 	'docviewer',
 	'rss',
-	'stundenbuch'
+	'stundenbuch',
+	'timezone-converter'
 ];
 
 function getOldSWCaches () {
