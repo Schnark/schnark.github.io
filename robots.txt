@@ -16,3 +16,4 @@ Disallow: /js13kgames-2020/min/
 Disallow: /js13kgames-2021/min/
 Disallow: /js13kgames-2022/public/
 Disallow: /js13kgames-2023/min/
+Disallow: /js13kgames-2024/min/
