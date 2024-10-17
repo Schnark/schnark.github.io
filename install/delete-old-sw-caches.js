@@ -7,6 +7,7 @@ var OLD_SW_CACHES = [
 	'rss',
 	'stundenbuch',
 	'timezone-converter',
+	'unicode',
 	'world-map-skiller'
 ];
 
