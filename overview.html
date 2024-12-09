@@ -10,11 +10,13 @@
 <h1>Overview</h1>
 <p>This is an overview over all my code, published on GitHub and elsewhere.</p>
 
+<p>Please note that my GitHub repositories are managed similar to what is described in <a href="https://xkcd.com/1597/">xkcd comic 1597</a>. Or even worse: I do not have the git repositories on my local machine. To update code on GitHub I clone the repository in <code>/tmp</code>, update the files, push the changes to GitHub and then discard the local repository again.</p>
+
 <h2>Apps for Firefox OS</h2>
 <p>Most of my apps for Firefox are listed in the <a href="ffos-apps.html">list of apps</a>, except for <a href="https://github.com/Schnark/stundenbuch">stundenbuch</a>, which is omitted there, because it requires a password for access. Most of these apps should also work in any browser.</p>
 <p>There are some additional repositories:</p>
 <ul>
-<li><a href="https://github.com/Schnark/schnark.github.io">schnark.github.io</a> contains the code for installation.</li>
+<li><a href="https://github.com/Schnark/schnark.github.io">schnark.github.io</a> contains the code for installation (as well as genaral code for my site).</li>
 <li><a href="https://github.com/Schnark/partial-firefox-marketplace-backup">partial-firefox-marketplace-backup</a> contains a few apps from the old Firefox OS Marketplace.</li>
 <li><a href="https://github.com/Schnark/ffos-simulator">ffos-simulator</a> contains some experimental code to run Firefox OS apps directly in any modern browser.</li>
 </ul>
@@ -31,11 +33,44 @@
 </ul>
 
 <h2>Other code</h2>
-<p><a href="https://github.com/Schnark/mr-c-mr-t">mr-c-mr-t</a> contains the code for an interactive story by Lewis Carroll.</p>
-<p><a href="https://github.com/Schnark/moz-activity">moz-activity</a> contains a polyfill for the <code>MozActivity</code> class.</p>
-<p><a href="https://github.com/Schnark/zip">zip</a> contains JS libraries to work with ZIP archives.</p>
-<p><a href="https://github.com/Schnark/proxy-test">proxy-test</a> contains code to quickly test CORS proxys.</p>
-<p><a href="https://github.com/Schnark/bookmarks">bookmarks</a> is a script to manage collections of bookmarks.</p>
-<p><a href="https://github.com/Schnark/lewis-carroll">lewis-carroll</a> contains an (almost really) complete collection of the works by Lewis Carroll, and tools to build the files, including a LaTeX-to-HTML converter and a tiny search engine.</p>
-<p>Some old programs (and some not so old, but abandoned and never published before) are in <a href="https://github.com/Schnark/old-stuff">old-stuff</a>.</p>
+<ul>
+<li><a href="https://github.com/Schnark/mr-c-mr-t">mr-c-mr-t</a> contains the code for an interactive story by Lewis Carroll.</li>
+<li><a href="https://github.com/Schnark/moz-activity">moz-activity</a> contains a polyfill for the <code>MozActivity</code> class.</li>
+<li><a href="https://github.com/Schnark/zip">zip</a> contains JS libraries to work with ZIP archives.</li>
+<li><a href="https://github.com/Schnark/proxy-test">proxy-test</a> contains code to quickly test CORS proxys.</li>
+<li><a href="https://github.com/Schnark/bookmarks">bookmarks</a> is a script to manage collections of bookmarks.</li>
+<li><a href="https://github.com/Schnark/lewis-carroll">lewis-carroll</a> contains an (almost really) complete collection of the works by Lewis Carroll, and tools to build the files, including a LaTeX-to-HTML converter and a tiny search engine.</li>
+<li>Some old programs (and some not so old, but abandoned and never published before) are in <a href="https://github.com/Schnark/old-stuff">old-stuff</a>.</li>
+</ul>
+
+<h2>Libraries</h2>
+<p>While I’m not really a fan of software libraries, I do write code in a way to make re-use easy when I think this useful. So the following files can be used as libraries elsewhere. In some cases a few adaptions to your situation may be necessary, but should be easy.</p>
+<p>Especially for the js13k-Games competition the following might be interesting:</p>
+<ul>
+<li>The build script, consisting of the files makefile and modify.sed. Note that the files generally improve over the years, but also change due to the current needs and may drop unused features: <a href="https://github.com/Schnark/js13kgames-2020">2020</a>, <a href="https://github.com/Schnark/js13kgames-2021">2021</a>, <a href="https://github.com/Schnark/js13kgames-2022">2022</a>, <a href="https://github.com/Schnark/js13kgames-2023">2023</a>, <a href="https://github.com/Schnark/js13kgames-2024">2024</a></li>
+<li>My small music player also exists in several variants with varying features: <a href="https://github.com/Schnark/js13kgames-2021/blob/master/res/music.js">2021</a>, <a href="https://github.com/Schnark/js13kgames-2022/blob/master/res/audio.js">2022</a>, <a href="https://github.com/Schnark/js13kgames-2023/blob/master/res/audio.js">2023</a></li>
+<li>For the server category I created <a href="https://github.com/Schnark/js13kgames-2022/blob/master/game-lib">a small library</a>.</li>
+<li>To handle fullscreen mode there is <a href="https://github.com/Schnark/js13kgames-2023/blob/master/res/fullscreen.js">fullscreen.js</a> (or in <a href="https://github.com/Schnark/js13kgames-2021/blob/master/res/fullscreen.js">the variant of 2021</a>).</li>
+<li>For storing data there is <a href="https://github.com/Schnark/js13kgames-2022/blob/master/res/storage.js">storage.js</a> (or in the variants of <a href="https://github.com/Schnark/js13kgames-2018/storage.js">2018</a> or <a href="https://github.com/Schnark/js13kgames-2021/blob/master/res/storage.js">2021</a>).</li>
+</ul>
+<p>For other projects the following files may be interesting:</p>
+<ul>
+<li>To handle keyboard events on old browsers there is <a href="https://github.com/Schnark/math/blob/master/res/fixKeyboard.js">fixKeyboard.js</a>, this also exists in <a href="https://github.com/Schnark/music-editor/blob/master/res/fixKeyboard.js">music-editor</a>.</li>
+<li>For a virtual keyboard you can use <a href="https://github.com/Schnark/math/blob/master/res/input.js">input.js</a>, <a href="https://github.com/Schnark/math/blob/master/res/input.css">input.css</a> and <a href="https://github.com/Schnark/math/blob/master/res/keyboard.js">keyboard.js</a> (for one line inputs) or <a href="https://github.com/Schnark/music-editor/blob/master/res/inputbox.js">inputbox.js</a>, <a href="https://github.com/Schnark/music-editor/blob/master/res/inputbox.css">inputbox.css</a> and <a href="https://github.com/Schnark/music-editor/blob/master/res/keyboard.js">keyboard.js</a> (for multiple lines).</li>
+<li>Diffs (and highlights) for HTML can be generated with <a href="https://github.com/Schnark/rss/blob/master/js/util-diff.js">util-diff.js</a>, which relies on <a href="https://github.com/Schnark/rss/blob/master/js/lib/arraydiff.js">arraydiff.js</a> and has <a href="https://github.com/Schnark/rss/blob/master/test">unit tests</a>.</li>
+<li>Another diff library (originally written for Wikipedia) is <a href="https://github.com/Schnark/stundenbuch/blob/master/test/diff.js">diff.js</a>, which also has <a href="https://schnark.github.io/stundenbuch/test-diff.html">a simple interface</a>.</li>
+<li><a href="https://github.com/Schnark/stundenbuch/blob/master/js/lib/xtea-asm.js">xtea-asm.js</a> can be used for encryption with the XTEA algorithm.</li>
+<li><a href="https://github.com/Schnark/stundenbuch/blob/master/js/audio.js">audio.js</a> has several features, it can render notes, play them and use speech synthesis.</li>
+<li>To disable screensavers you can use <a href="https://github.com/Schnark/stundenbuch/blob/master/js/screenlock.js">screenlock.js</a>.</li>
+<li><a href="https://github.com/Schnark/world-map-skiller/blob/master/css/flags.png">flags.png</a> and <a href="https://github.com/Schnark/world-map-skiller/blob/master/css/flags.css">flags.css</a> contain flags for all countries (and some more).</li>
+<li>To convert LaTeX to HTML you can use <a href="https://github.com/Schnark/lewis-carroll/tree/master/latex-to-html">latex-to-html</a>.</li>
+<li>I also created <a href="https://github.com/Schnark/lewis-carroll/tree/master/search">a small search engine</a>.</li>
+</ul>
+<p>Some libraries are actually libraries outside of other projects:</p>
+<ul>
+<li><a href="https://github.com/Schnark/zip">zip</a> allows you to work with ZIP archives.</li>
+<li><a href="https://github.com/Schnark/moz-activity">moz-activity</a> provides a polyfill for the MozActivity object.</li>
+<li><a href="https://github.com/Schnark/old-stuff/tree/master/js/simple-webgl">simple-webgl</a> has two 3D renderers.</li>
+<li>Among the old stuff there are some more libraries, also in other languages than JS.</li>
+</ul>
 </body></html>

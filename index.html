@@ -32,6 +32,15 @@ a.big:active {
 	box-shadow: 0 0 5px #00f;
 }
 
+@media (prefers-color-scheme: dark) {
+	a.big:hover,
+	a.big:focus,
+	a.big:active {
+		border-color: #aaf;
+		box-shadow: 0 0 5px #aaf;
+	}
+}
+
 a.big h2 {
 	margin-top: 0;
 }
@@ -41,10 +50,6 @@ a.big img {
 	position: absolute;
 	top: 0.75em;
 	left: 0.75em;
-	image-rendering: -webkit-optimize-contrast;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: crisp-edges;
-	image-rendering: pixelated;
 }
 
 @keyframes img {
@@ -101,7 +106,7 @@ address p {
 
 <a href="ffos-apps.html" class="big">
 <h2>Apps for Firefox OS</h2>
-<img alt="" src="ffos-favicon.ico">
+<img alt="" src="ffos-favicon.svg">
 <p>I developed several apps for FFOS. Since they are based on web technologies, most of them also run in any browser. <span class="more">→ more</span></p>
 </a>
 

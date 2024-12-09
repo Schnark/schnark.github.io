@@ -50,5 +50,20 @@ p {
 
 ul {
 	line-height: 2;
-	margin: 1em 2em;
+	margin: 0 2em 0.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		color: #c8ccd1;
+		background: #222;
+	}
+	a,
+	a .more {
+		color: #98b4ec;
+	}
+	a:visited,
+	a:visited .more {
+		color: #b0abf9;
+	}
 }
