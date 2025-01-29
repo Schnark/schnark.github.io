@@ -17,3 +17,21 @@ Disallow: /js13kgames-2021/min/
 Disallow: /js13kgames-2022/public/
 Disallow: /js13kgames-2023/min/
 Disallow: /js13kgames-2024/min/
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OpenAI
+Disallow: /
