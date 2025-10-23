@@ -56,8 +56,16 @@ function checkInstallStatus (url, callback) {
 }
 
 function getTitle (data) {
-	var lang = _('langcode');
-	return data.title[lang] || data.title.en;
+	var lang = _('langcode'), title, sep;
+	title = data.title[lang] || data.title.en;
+	if (Array.isArray(title)) {
+		return title;
+	}
+	sep = title.indexOf(' – ');
+	if (sep > -1) {
+		return [title.slice(0, sep), title.slice(sep + 3)];
+	}
+	return [title, _('subtitle')];
 }
 
 function getIcon (data) {
@@ -158,18 +166,6 @@ function updateInstallButton (button, status, url) {
 	button.innerHTML = label;
 }
 
-function makeTitle (element, title) {
-	var sep = title.indexOf(' – ');
-	if (sep === -1) {
-		element.textContent = title;
-		element.setAttribute('itemprop', 'name');
-		element.setAttribute('class', 'main');
-	} else {
-		element.innerHTML = '<span itemprop="name" class="main">' + escapeHtml(title.slice(0, sep)) + '</span>' +
-			escapeHtml(title.slice(sep));
-	}
-}
-
 function escapeHtml (str) {
 	return str
 		.replace(/&/g, '&amp;')
@@ -197,8 +193,9 @@ function showInstall (data) {
 	element.setAttribute('itemtype', 'http://schema.org/WebApplication');
 
 	title = getTitle(data);
-	document.getElementById('title1').textContent = title;
-	makeTitle(document.getElementById('title2'), title);
+	document.getElementById('title1').textContent = title.join(' – ');
+	document.getElementById('title2').innerHTML = '<span itemprop="name" class="main">' +
+		escapeHtml(title[0]) + '</span> – ' + escapeHtml(title[1]);
 
 	element = document.getElementById('icon');
 	element.src = getIcon(data);
