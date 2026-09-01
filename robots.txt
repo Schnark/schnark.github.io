@@ -20,6 +20,7 @@ Disallow: /js13kgames-2022/public/
 Disallow: /js13kgames-2023/min/
 Disallow: /js13kgames-2024/min/
 Disallow: /js13kgames-2025/min/
+Disallow: /js13kgames-2026/min/
 
 User-agent: Bytespider
 Disallow: /
